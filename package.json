@@ -1,0 +1,36 @@
+{
+  "name": "zimmerzone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skysthelimit91/ZimmerZone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skysthelimit91/ZimmerZone/issues"
+  },
+  "homepage": "https://github.com/skysthelimit91/ZimmerZone#readme",
+  "dependencies": {
+    "ajax": "0.0.4",
+    "axios": "^0.17.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "expres": "0.0.5",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "morgan": "^1.9.0",
+    "mustache-express": "^1.2.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-strategy": "^1.0.0",
+    "pg-promise": "^7.4.1",
+    "purecss": "^1.0.0"
+  }
+}
