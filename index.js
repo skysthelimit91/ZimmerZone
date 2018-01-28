@@ -41,3 +41,12 @@ app.use(
 const auth = require('./services/auth.js');
 app.use(auth.passportInstance);
 app.use(auth.passportSession);
+
+const userRouter = require('./controllers/users.js');
+app.use('/users', userRouter);
+
+app.use((err, req, res, next) => {
+  console.log('Error encountered:', err);
+  res.status(500);
+  res.send(err);
+});
