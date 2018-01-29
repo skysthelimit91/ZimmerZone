@@ -5,7 +5,6 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const mustacheExpress = require('mustache-express');
 const ajax = require('ajax');
-const axios = require('axios');
 const app = express();
 
 const port = process.env.PORT || 3000;
