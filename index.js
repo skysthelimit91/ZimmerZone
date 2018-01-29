@@ -44,6 +44,10 @@ app.use(auth.passportSession);
 const userRouter = require('./controllers/users.js');
 app.use('/users', userRouter);
 
+const albumRouter = require('./controllers/albums.js');
+app.use('/albums', albumRouter);
+app.use('/users/profile', albumRouter);
+
 app.use((err, req, res, next) => {
   console.log('Error encountered:', err);
   res.status(500);

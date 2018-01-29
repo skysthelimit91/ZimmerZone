@@ -74,7 +74,9 @@ userRouter.get(
     console.log('in handler for users/profile');
     console.log('req.user:');
     console.log(req.user);
-    res.render('users/profile', { user: res.locals.userData });
+    res.render('users/profile', {
+      user: res.locals.userData,
+    });
   }
 );
 
