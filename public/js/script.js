@@ -20,7 +20,7 @@ $(document).ready(function() {
         console.log('response ', data);
 
         // redirecting to the album's show page on success
-        //window.location.href = `/show/${id}`;
+        window.location.href = `/show/${id}`;
       },
       error: function(xhr, status, error) {
         // add error handler

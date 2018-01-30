@@ -19,8 +19,8 @@ userModelObject.create = function create(user) {
     // but we can use the password digest to verify if a submitted password is correct.
     // This is the magic of hashes.
     return db.oneOrNone(
-        'INSERT INTO users (email, password_digest, likes) VALUES ($1, $2, $3) RETURNING *;',
-        [user.email, passwordDigest, 0]
+        'INSERT INTO users (email, password_digest, likes, comments) VALUES ($1, $2, $3, $4) RETURNING *;',
+        [user.email, passwordDigest, 0, 0]
     );
 };
 

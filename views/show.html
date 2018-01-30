@@ -23,23 +23,21 @@
 
 
 
-<li>{{artistname}}</li> 
+<li>{{albuminfo.artistname}}</li> 
 
-  -{{collectionname}}
+  -{{albuminfo.collectionname}}
 <br>
 
-<img class="albumpic" src="{{artworkurl100}}">
+<img class="albumpic" src="{{albuminfo.artworkurl100}}">
 
 
 </ul>
 
 
-<a href="{{collectionviewurl}}">Listen to this Soundtrack here!</a>
+<a href="{{albuminfo.collectionviewurl}}">Listen to this Soundtrack here!</a>
 
 <div class="commentsdiv">
-
-{{id}}
-
+{{#commentinfo}}<li>{{comment}}</li>{{/commentinfo}}
 </div>
 <br>
 <br>
@@ -49,7 +47,7 @@
         <textarea id="comments" type="text" name="comments" class="pure-input-1-2" placeholder="Type your comment here!"></textarea>
         <!-- <input id="comments" type="text" name="comments" placeholder="Type comment here"> -->
     </fieldset>
-    <input id="album_id" type="hidden" value="{{id}}" name="album_id">
+    <input id="album_id" type="hidden" value="{{albuminfo.id}}" name="album_id">
     <input id="postb" type="submit" class="post pure-button">Post Comment 
     <input id="delete" type="submit" class="delete pure-button" value="Delete">Delete Comment
   </form> 

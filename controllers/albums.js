@@ -9,12 +9,35 @@ albumRouter.get('/home', albumModel.allAlbums, (req, res, next) => {
   });
 });
 
-albumRouter.get('/:albumsId', albumModel.findById, (req, res, next) => {
-  res.render('show', res.locals.findByIdData);
-});
+albumRouter.get(
+  '/:albumsId',
+  albumModel.findById,
+  albumModel.postComments,
+  (req, res, next) => {
+    console.log('in findById function');
+    res.render('show', {
+      albuminfo: res.locals.findByIdData,
+      commentinfo: res.locals.allComments,
+    });
+  }
+);
 
 albumRouter.post('/:albumsId', albumModel.create, (req, res, next) => {
   res.json(res.locals.findByIdData);
 });
 
-module.exports = albumRouter;     
+/*albumRouter.get('/:albumsId', albumModel.postComments, (req, res, next) => {
+  console.log('make comments appear');
+  res.render('show', {
+    commentinfo: res.locals.allComments,
+  });
+});/*
+
+/*albumRouter.get('/:albumsId', albumModel.postComments, (req, res, next) => {
+  console.log('in post comments function');
+  res.render('show', {
+    AllCommentsinfo: res.locals.allComments,
+  });
+});
+*/
+module.exports = albumRouter;

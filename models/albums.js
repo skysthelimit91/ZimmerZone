@@ -90,12 +90,29 @@ albumModel.create = (req, res, next) => {
       [req.body.album_id, req.body.comments]
     )
     .then(data => {
-      res.locals.newBeerId = data.id;
+      res.locals.newcommentInfo = data;
       next();
     })
     .catch(error => {
-      console.log('error encountered in beers.create. Error:', error);
+      console.log('error encountered in albumModel.create. Error:', error);
       next(error);
     });
 };
+
+albumModel.postComments = (req, res, next) => {
+  db
+    .any('SELECT * FROM comments')
+    .then(data => {
+      res.locals.allComments = data;
+      next();
+    })
+    .catch(error => {
+      console.log(
+        'error encountered in albumModel.postComments. Error:',
+        error
+      );
+      next(error);
+    });
+};
+
 module.exports = albumModel;
