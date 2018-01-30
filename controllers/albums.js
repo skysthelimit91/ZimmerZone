@@ -15,13 +15,11 @@ albumRouter.get(
   '/:albumsId',
   albumModel.findById,
   albumModel.postComments,
-  auth.restrict,
   (req, res, next) => {
     console.log('in findById function');
     res.render('show', {
       albuminfo: res.locals.findByIdData,
       commentinfo: res.locals.allComments,
-      user: res.locals.userData,
     });
   }
 );
@@ -30,6 +28,7 @@ albumRouter.post(
   '/:albumsId',
   albumModel.create,
   auth.restrict,
+
   (req, res, next) => {
     res.json(res.locals.findByIdData);
   }

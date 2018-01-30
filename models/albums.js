@@ -86,8 +86,8 @@ albumModel.findById = (req, res, next) => {
 albumModel.create = (req, res, next) => {
   db
     .one(
-      'INSERT INTO comments (album_id, comment) VALUES ($1, $2) RETURNING id;',
-      [req.body.album_id, req.body.comments]
+      'INSERT INTO comments (album_id, comment, user_id) VALUES ($1, $2, $3) RETURNING id;',
+      [req.body.album_id, req.body.comments, req.user.email]
     )
     .then(data => {
       res.locals.newcommentInfo = data;
@@ -103,7 +103,7 @@ albumModel.postComments = (req, res, next) => {
   const id = req.params.albumsId;
   db
     .any(
-      'SELECT comments.comment FROM comments JOIN albums ON (comments.album_id = albums.id) WHERE albums.id = ${id}',
+      'SELECT comments.comment, comments.user_id FROM comments JOIN albums ON (comments.album_id = albums.id) WHERE albums.id = ${id}',
       { id: id }
     )
     .then(data => {

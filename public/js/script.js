@@ -27,4 +27,28 @@ $(document).ready(function() {
       },
     });
   });
+  /* $('#delete').click(function() {
+    // selecting the beer's id from hidden input
+    const id = $('#beer-id').val();
+    console.log(`Deleting id: ${id}`);
+
+    // Prompt user before deleting
+    const confirm = window.confirm('Are you sure you want to delete this?');
+    if (confirm) {
+      // execute if user selects okay
+      $.ajax({
+        url: `/beers/${id}`, // Path
+        type: 'DELETE',
+        success: function(data) {
+          console.log('deleting ', data);
+
+          // redirect to beers list after deleting an individual beer
+          window.location.href = '/beers';
+        },
+        error: function(xhr, status, error) {
+          // add error handler
+        },
+      });
+    }
+  }); */
 });

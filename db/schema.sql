@@ -35,6 +35,6 @@ CREATE TABLE comments(
   id BIGSERIAL PRIMARY KEY,
   album_id INTEGER REFERENCES albums(id),
   comment VARCHAR(255) NOT NULL,
-  poster VARCHAR REFERENCES users(email)
+  user_id VARCHAR REFERENCES users(email)
 
 );

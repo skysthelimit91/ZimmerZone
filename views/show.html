@@ -37,7 +37,7 @@
 <a href="{{albuminfo.collectionviewurl}}">Listen to this Soundtrack here!</a>
 
 <div id="commentsdiv">
-{{#commentinfo}}<li>{{comment}}</li>{{/commentinfo}}
+{{#commentinfo}}<li id="comlocation">{{user_id}}:&nbsp;&nbsp;&nbsp;{{comment}}</li>{{/commentinfo}}
 </div>
 <br>
 <br>
@@ -45,7 +45,6 @@
  <fieldset class="pure-group">
         
         <textarea id="comments" type="text" name="comments" class="pure-input-1-2" placeholder="Type your comment here!"></textarea>
-        <!-- <input id="comments" type="text" name="comments" placeholder="Type comment here"> -->
     </fieldset>
     <input id="album_id" type="hidden" value="{{albuminfo.id}}" name="album_id">
     <input id="postb" type="submit" class="post pure-button">Post Comment 
