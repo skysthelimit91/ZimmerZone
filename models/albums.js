@@ -22,8 +22,9 @@ function albumNameSeedStep(albumData) {
         );
       });
   });
-  // If there's a link to more album information, recursively follow it
-  if (albumData.next) {
+}
+// If there's a link to more album information, recursively follow it
+/*if (albumData.next) {
     axios({
       method: 'get',
       url: albumData.next,
@@ -40,7 +41,7 @@ function albumNameSeedStep(albumData) {
       });
   }
 }
-
+*/
 albumModel.seedAllAlbumNames = function() {
   axios({
     method: 'get',
@@ -68,4 +69,33 @@ albumModel.allAlbums = (req, res, next) => {
     });
 };
 
+albumModel.findById = (req, res, next) => {
+  const id = req.params.albumsId;
+  db
+    .one('SELECT * FROM albums WHERE albums.id = ${id}', { id: id })
+    .then(data => {
+      res.locals.findByIdData = data;
+      next();
+    })
+    .catch(error => {
+      console.log('error encountered in albumModel.findById. Error:', error);
+      next(error);
+    });
+};
+
+albumModel.create = (req, res, next) => {
+  db
+    .one(
+      'INSERT INTO comments (album_id, comment) VALUES ($1, $2) RETURNING id;',
+      [req.body.album_id, req.body.comments]
+    )
+    .then(data => {
+      res.locals.newBeerId = data.id;
+      next();
+    })
+    .catch(error => {
+      console.log('error encountered in beers.create. Error:', error);
+      next(error);
+    });
+};
 module.exports = albumModel;

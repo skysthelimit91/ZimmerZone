@@ -1,0 +1,59 @@
+</!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/script.js"></script>
+
+</head>
+<body>  
+
+                <div>
+                <a href="/users/logout">Logout</a>
+                <a href="/users/profile">Profile</a>
+                <a href="/albums/home">Home</a>
+            </div>
+<ul>
+  
+<div class="albums">
+
+
+
+
+
+<li>{{artistname}}</li> 
+
+  -{{collectionname}}
+<br>
+
+<img class="albumpic" src="{{artworkurl100}}">
+
+
+</ul>
+
+
+<a href="{{collectionviewurl}}">Listen to this Soundtrack here!</a>
+
+<div class="commentsdiv">
+
+{{id}}
+
+</div>
+<br>
+<br>
+<form id="commentfield">
+ <fieldset class="pure-group">
+        
+        <textarea id="comments" type="text" name="comments" class="pure-input-1-2" placeholder="Type your comment here!"></textarea>
+        <!-- <input id="comments" type="text" name="comments" placeholder="Type comment here"> -->
+    </fieldset>
+    <input id="album_id" type="hidden" value="{{id}}" name="album_id">
+    <input id="postb" type="submit" class="post pure-button">Post Comment 
+    <input id="delete" type="submit" class="delete pure-button" value="Delete">Delete Comment
+  </form> 
+
+    
+</body>
+</html>

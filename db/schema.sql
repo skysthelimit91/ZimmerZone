@@ -12,7 +12,9 @@ CREATE TABLE users (
   id BIGSERIAL PRIMARY KEY,
   email VARCHAR NOT NULL UNIQUE,
   password_digest VARCHAR NOT NULL,
-  likes INTEGER
+  likes INTEGER,
+  comments INTEGER
+  
   
 );
 
@@ -25,4 +27,15 @@ CREATE TABLE albums (
   artworkUrl100 VARCHAR(255),
   collectionViewUrl VARCHAR(255)
   
+);
+
+DROP TABLE IF EXISTS comments;
+
+CREATE TABLE comments(
+  id BIGSERIAL PRIMARY KEY,
+  album_id INTEGER REFERENCES albums(id),
+  comment VARCHAR(255),
+  comment_id INTEGER REFERENCES users(id),
+  comment_creater VARCHAR REFERENCES users(email)
+
 );
