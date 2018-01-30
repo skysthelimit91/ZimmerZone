@@ -100,8 +100,12 @@ albumModel.create = (req, res, next) => {
 };
 
 albumModel.postComments = (req, res, next) => {
+  const id = req.params.albumsId;
   db
-    .any('SELECT * FROM comments')
+    .any(
+      'SELECT comments.comment FROM comments JOIN albums ON (comments.album_id = albums.id) WHERE albums.id = ${id}',
+      { id: id }
+    )
     .then(data => {
       res.locals.allComments = data;
       next();
