@@ -34,6 +34,23 @@ albumRouter.post(
   }
 );
 
+albumRouter.delete('/:commentsId', albumModel.destroy, (req, res, next) => {
+  res.json({ id: req.params.commentsId });
+});
+
+albumRouter.get(
+  '/:albumsId/comment',
+  albumModel.findById,
+  albumModel.postComments,
+  (req, res, next) => {
+    console.log('in findById function');
+    res.render('comment', {
+      albuminfo: res.locals.findByIdData,
+      commentinfo: res.locals.allComments,
+    });
+  }
+);
+
 /*albumRouter.get('/:albumsId', albumModel.postComments, (req, res, next) => {
   console.log('make comments appear');
   res.render('show', {

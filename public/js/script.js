@@ -27,9 +27,11 @@ $(document).ready(function() {
       },
     });
   });
-  /* $('#delete').click(function() {
+  /*$('#delete').submit(function() {
     // selecting the beer's id from hidden input
-    const id = $('#beer-id').val();
+    const id = $('#comment_id').val();
+    const A = $('#album_id').val();
+
     console.log(`Deleting id: ${id}`);
 
     // Prompt user before deleting
@@ -37,13 +39,13 @@ $(document).ready(function() {
     if (confirm) {
       // execute if user selects okay
       $.ajax({
-        url: `/beers/${id}`, // Path
+        url: `${id}` // Path
         type: 'DELETE',
         success: function(data) {
           console.log('deleting ', data);
 
           // redirect to beers list after deleting an individual beer
-          window.location.href = '/beers';
+          //window.location.href = '/show/${id}';
         },
         error: function(xhr, status, error) {
           // add error handler

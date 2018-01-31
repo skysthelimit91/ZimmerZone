@@ -9,7 +9,6 @@
 
 </head>
 <body>  
-
                 <div>
                 <a href="/users/logout">Logout</a>
                 <a href="/users/profile">Profile</a>
@@ -37,7 +36,7 @@
 <a href="{{albuminfo.collectionviewurl}}">Listen to this Soundtrack here!</a>
 
 <div id="commentsdiv">
-{{#commentinfo}}<li id="comlocation">{{user_id}}:&nbsp;&nbsp;&nbsp;{{comment}}</li>{{/commentinfo}}
+{{#commentinfo}}<a href="/comments/{{id}}"><li>{{user_id}}:&nbsp;&nbsp;&nbsp;{{comment}}</li></a>{{/commentinfo}}
 </div>
 <br>
 <br>
@@ -46,11 +45,12 @@
         
         <textarea id="comments" type="text" name="comments" class="pure-input-1-2" placeholder="Type your comment here!"></textarea>
     </fieldset>
+     <input id="comment_id" type="hidden" value="{{commentinfo.id}}" name="comment_id">
     <input id="album_id" type="hidden" value="{{albuminfo.id}}" name="album_id">
     <input id="postb" type="submit" class="post pure-button">Post Comment 
     <input id="delete" type="submit" class="delete pure-button" value="Delete">Delete Comment
   </form> 
 
-    
+      
 </body>
 </html>

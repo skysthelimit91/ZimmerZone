@@ -103,7 +103,7 @@ albumModel.postComments = (req, res, next) => {
   const id = req.params.albumsId;
   db
     .any(
-      'SELECT comments.comment, comments.user_id FROM comments JOIN albums ON (comments.album_id = albums.id) WHERE albums.id = ${id}',
+      'SELECT comments.comment, comments.user_id, comments.id FROM comments JOIN albums ON (comments.album_id = albums.id) WHERE albums.id = ${id}',
       { id: id }
     )
     .then(data => {
@@ -115,6 +115,20 @@ albumModel.postComments = (req, res, next) => {
         'error encountered in albumModel.postComments. Error:',
         error
       );
+      next(error);
+    });
+};
+
+albumModel.destroy = (req, res, next) => {
+  const commentsId = req.comments.id;
+
+  db
+    .none('DELETE FROM comments WHERE comments.id = $1', [commentsId])
+    .then(() => {
+      next();
+    })
+    .catch(error => {
+      console.log('error encountered in albumModel.destroy. error:', error);
       next(error);
     });
 };
