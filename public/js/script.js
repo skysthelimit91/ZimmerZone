@@ -27,10 +27,9 @@ $(document).ready(function() {
       },
     });
   });
-  /*$('#delete').submit(function() {
-    // selecting the beer's id from hidden input
+  $('#delete').click(function() {
+    // selecting the comment's id from hidden input
     const id = $('#comment_id').val();
-    const A = $('#album_id').val();
 
     console.log(`Deleting id: ${id}`);
 
@@ -39,7 +38,7 @@ $(document).ready(function() {
     if (confirm) {
       // execute if user selects okay
       $.ajax({
-        url: `${id}` // Path
+        url: `/albums/${id}`, // Path
         type: 'DELETE',
         success: function(data) {
           console.log('deleting ', data);
@@ -52,5 +51,5 @@ $(document).ready(function() {
         },
       });
     }
-  }); */
+  });
 });

@@ -103,7 +103,7 @@ albumModel.postComments = (req, res, next) => {
   const id = req.params.albumsId;
   db
     .any(
-      'SELECT comments.comment, comments.user_id, comments.id FROM comments JOIN albums ON (comments.album_id = albums.id) WHERE albums.id = ${id}',
+      'SELECT comments.comment, comments.user_id, comments.id, comments.album_id FROM comments JOIN albums ON (comments.album_id = albums.id) WHERE albums.id = ${id}',
       { id: id }
     )
     .then(data => {
@@ -120,10 +120,8 @@ albumModel.postComments = (req, res, next) => {
 };
 
 albumModel.destroy = (req, res, next) => {
-  const commentsId = req.comments.id;
-
   db
-    .none('DELETE FROM comments WHERE comments.id = $1', [commentsId])
+    .none('DELETE FROM comments WHERE id = $1', [req.params.commentsId])
     .then(() => {
       next();
     })
@@ -132,5 +130,23 @@ albumModel.destroy = (req, res, next) => {
       next(error);
     });
 };
+
+// albumModel.findComments = (req, res, next) => {
+//   const id = req.params.commentsId;
+
+//   db
+//     .any('SELECT * FROM comments WHERE comments.id = ${id}', { id: id })
+//     .then(data => {
+//       res.locals.SpecificComments = data;
+//       next();
+//     })
+//     .catch(error => {
+//       console.log(
+//         'error encountered in albumModel.findComments. error:',
+//         error
+//       );
+//       next(error);
+//     });
+// };
 
 module.exports = albumModel;
