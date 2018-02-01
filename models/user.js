@@ -49,4 +49,22 @@ userModelObject.findByEmailMiddleware = function findByEmailMiddleware(
         .catch(err => console.log('ERROR:', err));
 };
 
+userModelObject.incrementUserCounter = function incrementUserCounter(
+    req,
+    res,
+    next
+) {
+    // get the user counter number
+    db
+        .one(
+            'UPDATE users SET comments = comments + 1 WHERE email = $1 RETURNING comments',
+            [req.user.email]
+        )
+        .then(counterData => {
+            res.locals.commentData = commentData;
+            next();
+        })
+        .catch(err => console.log('ERROR:', err));
+};
+
 module.exports = userModelObject;

@@ -1,4 +1,44 @@
 $(document).ready(function() {
+  $('.edit').click(function(e) {
+    console.log('click heard');
+
+    const inputId = e.target.getAttribute('data-input-id');
+    $(inputId).removeAttr('disabled');
+  });
+
+  // $('#edithere').submit(function(e) {
+  //   // preventing form from submitting
+  //   e.preventDefault();
+
+  //   // grabbing form data
+  //   const data = $(this).serialize();
+  //   // selecting the comment's id from hidden input
+  //   const commentId = e.target.getAttribute('data-comment-id');
+
+  //   // $('.edit').click(function(e) {
+  //   //   console.log('click heard');
+
+  //   //   $('#comment').removeAttr('disabled');
+  //   // });
+
+  //   console.log(`Form data: ${data}`);
+
+  //   // PUT request to /albums/:commentId to update an individual comment
+  //   $.ajax({
+  //     url: `/albums/${commentId}`,
+  //     data: data,
+  //     type: 'PUT',
+  //     success: function(data) {
+  //       console.log('response ', data);
+  //       // redirecting to the beer's show page on success
+  //       //window.location.href = `/albums/${data.id}`;
+  //     },
+  //     error: function(xhr, status, error) {
+  //       // add error handler
+  //     },
+  //   });
+  // });
+
   // selecting edit form
   console.log('connected');
   $('#commentfield').submit(function(e) {
@@ -8,43 +48,48 @@ $(document).ready(function() {
     // grabbing form data
     const data = $(this).serialize();
     // selecting the album's id from hidden input
-    const id = $('#album_id').val();
+
+    const albumId = $('#album_id').val();
 
     console.log(`Form data: ${data}`);
 
+    //const id = $('#comments').val();
+
     $.ajax({
-      url: `/albums/${id}`,
+      url: `/albums/${albumId}`,
       data: data,
       type: 'POST',
       success: function(data) {
         console.log('response ', data);
-
-        // redirecting to the album's show page on success
-        window.location.href = `/show/${id}`;
+        window.location.href = `/albums/${albumId}`;
       },
       error: function(xhr, status, error) {
         // add error handler
       },
     });
   });
-  $('#delete').click(function() {
+  $('.delete').click(function(e) {
+    e.preventDefault();
+    console.log('attempting delete');
     // selecting the comment's id from hidden input
-    const id = $('#comment_id').val();
+    const commentId = e.target.getAttribute('data-comment-id');
+    const albumId = $('#album_id').val();
 
-    console.log(`Deleting id: ${id}`);
+    console.log(`Deleting id: ${commentId}`);
 
     // Prompt user before deleting
     const confirm = window.confirm('Are you sure you want to delete this?');
     if (confirm) {
       // execute if user selects okay
       $.ajax({
-        url: `/albums/${id}`, // Path
+        //app.delete(/:albumId/comments/:commentId, ...)
+        //url: `/albums/50/comments/4`
+        url: `/albums/${commentId}`, // Path
         type: 'DELETE',
         success: function(data) {
           console.log('deleting ', data);
 
-          // redirect to beers list after deleting an individual beer
-          //window.location.href = '/show/${id}';
+          window.location.href = `/albums/${albumId}`;
         },
         error: function(xhr, status, error) {
           // add error handler
@@ -53,3 +98,7 @@ $(document).ready(function() {
     }
   });
 });
+// function change() {
+//   document.getElementById('edit').addEventListener('click', enable);
+//   function enable() {}
+// }

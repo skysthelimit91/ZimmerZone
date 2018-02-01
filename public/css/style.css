@@ -1,5 +1,6 @@
 .post,
-.delete {
+.delete,
+.edit {
   color: white;
   border-radius: 4px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -13,7 +14,19 @@
   background: rgb(202, 60, 60);
 }
 
+.edit {
+  background: rgb(66, 184, 221);
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
 .commentsdiv {
   border-style: solid;
   border-color: red;
+}
+
+.messages {
+  border-style: none;
+  font-size: 16pt;
 }

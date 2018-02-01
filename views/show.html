@@ -1,57 +1,52 @@
 </!DOCTYPE html>
 <html>
-<head>
-  <title></title>
-
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
-  <script src="/js/jquery.js"></script>
-  <script src="/js/script.js"></script>
-
-</head>
-<body>  
-                <div>
-                <a href="/users/logout">Logout</a>
-                <a href="/users/profile">Profile</a>
-                <a href="/albums/home">Home</a>
-            </div>
-<ul>
-  
-<div class="albums">
-
-
-{{#commentinfo}}
-{{id}}
-{{/commentinfo}}
-
-<li>{{albuminfo.artistname}}</li> 
-
-  -{{albuminfo.collectionname}}
-<br>
-
-<img class="albumpic" src="{{albuminfo.artworkurl100}}">
-
-
-</ul>
-
-
-<a href="{{albuminfo.collectionviewurl}}">Listen to this Soundtrack here!</a>
-
-<div id="commentsdiv">
-{{#commentinfo}}<li>{{user_id}}:&nbsp;&nbsp;&nbsp;{{comment}}</li></a>{{/commentinfo}}
-</div>
-<br>
-<br>
-<form id="commentfield">
- <fieldset class="pure-group">
-        
-        <textarea id="comments" type="text" name="comments" class="pure-input-1-2" placeholder="Type your comment here!"></textarea>
-    </fieldset>
-     {{#commentinfo}}<input id="comment_id" type="hidden" value="{{id}}" name="comment_id">{{/commentinfo}}
-    <input id="album_id" type="hidden" value="{{albuminfo.id}}" name="album_id">
-    <input id="postb" type="submit" class="post pure-button">Post Comment 
-    <input id="delete" type="button" class="delete pure-button" value="Delete">Delete Comment
-  </form> 
-
+  <head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="/js/jquery.js"></script>
+    <script src="/js/script.js"></script>
+  </head>
+  <body>
+    <div>
+      <a href="/users/logout">Logout</a>
+      <a href="/users/profile">Profile</a>
+      <a href="/albums/home">Home</a>
+    </div>
+    <ul>
       
-</body>
-</html>
+      <div class="albums">
+        <li>{{albuminfo.artistname}}</li>
+        -{{albuminfo.collectionname}}
+        <br>
+        <img class="albumpic" src="{{albuminfo.artworkurl100}}">
+      </ul>
+      <a href="{{albuminfo.collectionviewurl}}">Listen to this Soundtrack here!</a>
+
+      <div id="commentsdiv">
+        {{#commentinfo}}<ul>{{user_id}}:&nbsp;&nbsp;&nbsp;
+          <form id="edithere"><input class="messages" id="comment" name="comment" type="text" value="{{comment}}" disabled>
+            <input id="editcomment" type="submit" value="Submit" class="post pure-button">
+          </form>
+          <!-- <input class="comment_id" type="hidden" value="{{id}}" name="comment_id"> -->
+          <!-- <input class="delete" type="button" class="delete pure-button" value="Delete"> -->
+        </ul> 
+        <button class="delete pure-button"
+                data-comment-id="{{id}}">Delete</button>
+<button class="edit pure-button" data-input-id=".messages">Edit</button>          
+        {{/commentinfo}}
+      </div>
+      <form id="commentfield">
+        <br>
+        <br>
+        <fieldset class="pure-group">
+          <input id="comments" type="text" name="comments" class="pure-input-1-2" placeholder="Type comment here!">
+        </fieldset>
+        <!--  {{#commentinfo}}<input id="comment_id" type="hidden" value="{{id}}" name="comment_id">{{/commentinfo}} -->
+        <input id="album_id" type="hidden" value="{{albuminfo.id}}" name="album_id">
+        <input id="postb" type="submit" value="Post" class="post pure-button">Post Comment
+        <!-- <input id="delete" type="button" class="delete pure-button" value="delete">Delete Comment -->
+        
+      </form>
+      
+    </body>
+  </html>

@@ -131,6 +131,21 @@ albumModel.destroy = (req, res, next) => {
     });
 };
 
+albumModel.update = (req, res, next) => {
+  db
+    .one('UPDATE comments SET comment = $1, WHERE id = $2 RETURNING *;', [
+      req.body.comment,
+    ])
+    .then(data => {
+      res.locals.updatedComment = data;
+      next();
+    })
+    .catch(error => {
+      console.log('error encountered in albumModel.update. Error:', error);
+      next(error);
+    });
+};
+
 // albumModel.findComments = (req, res, next) => {
 //   const id = req.params.commentsId;
 
