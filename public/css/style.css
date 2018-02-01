@@ -30,3 +30,18 @@
   border-style: none;
   font-size: 16pt;
 }
+
+.albums {
+  /*display: flex;*/
+  /*flex-direction: row;*/
+}
+
+#index {
+  background-color: #034f84;
+  display: flex;
+}
+
+.albumpic {
+  width: 200px;
+  height: 200px;
+}

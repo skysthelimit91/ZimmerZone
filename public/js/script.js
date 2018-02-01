@@ -3,7 +3,16 @@ $(document).ready(function() {
     console.log('click heard');
 
     const inputId = e.target.getAttribute('data-input-id');
-    $(inputId).removeAttr('disabled');
+    console.log('in .edit click callback. inputId:', inputId);
+    //$(inputId).removeAttr('disabled');
+  });
+
+  // TIMS HELPED
+  $('.comment-section').click(e => {
+    if (e.target.classList.contains('edit')) {
+      const $messagesInput = $(e.currentTarget).find('.messages');
+      $messagesInput.removeAttr('disabled');
+    }
   });
 
   $('#edithere').submit(function(e) {

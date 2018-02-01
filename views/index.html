@@ -5,24 +5,24 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Home Page</title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="/css/style.css">
     <script src="/js/jquery.js"></script>
     <script src="/js/script.js"></script>
 </head>
 
-<body>                
+<body id="index">                
                <div>
                 <a href="/users/logout">Logout</a>
                 <a href="/users/profile">Profie</a>
             </div>
 
-            
+
     <ul>
   {{#allAlbumsInfo}}
 <div class="albums">
 
 
-<li>{{artistname}}</li> 
+{{artistname}} 
 
   -{{collectionname}}
 <br>

@@ -14,25 +14,26 @@
     </div>
     <ul>
       
-      <div class="albums">
+      <div class="albumshow">
         <li>{{albuminfo.artistname}}</li>
         -{{albuminfo.collectionname}}
         <br>
         <img class="albumpic" src="{{albuminfo.artworkurl100}}">
       </ul>
       <a href="{{albuminfo.collectionviewurl}}">Listen to this Soundtrack here!</a>
-
       <div id="commentsdiv">
-        {{#commentinfo}}<ul>{{user_id}}:&nbsp;&nbsp;&nbsp;
+        {{#commentinfo}}
+        <div class="comment-section">
+          {{user_id}}:&nbsp;&nbsp;&nbsp;
           <form id="edithere"><input class="messages" id="comment" name="comment" type="text" value="{{comment}}" disabled>
             <input id="editcomment" type="submit" value="Submit" class="post pure-button">
           </form>
           <!-- <input class="comment_id" type="hidden" value="{{id}}" name="comment_id"> -->
           <!-- <input class="delete" type="button" class="delete pure-button" value="Delete"> -->
-        </ul> 
-        <button class="delete pure-button"
-                data-comment-id="{{id}}">Delete</button>
-<button class="edit pure-button" data-input-id=".messages">Edit</button>          
+          <button class="delete pure-button"
+          data-comment-id="{{id}}">Delete</button>
+          <button class="edit pure-button" data-input-id=".messages">Edit</button>
+        </div>
         {{/commentinfo}}
       </div>
       <form id="commentfield">
