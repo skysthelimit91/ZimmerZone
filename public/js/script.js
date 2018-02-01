@@ -32,7 +32,7 @@ $(document).ready(function() {
       success: function(data) {
         console.log('response ', data);
         // redirecting to the beer's show page on success
-        //window.location.href = `/albums/${data.id}`;
+        window.location.href = `/albums/${albumId}`;
       },
       error: function(xhr, status, error) {
         // add error handler

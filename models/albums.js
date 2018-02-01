@@ -133,10 +133,10 @@ albumModel.destroy = (req, res, next) => {
 
 albumModel.update = (req, res, next) => {
   db
-    .one('UPDATE comments SET comment = $1 WHERE album_id = $2 RETURNING *;', [
-      req.body.comment,
-      req.params.commentsId,
-    ])
+    .one(
+      'UPDATE comments SET comment = $1 WHERE user_id = $2 AND album_id = $3 RETURNING *;',
+      [req.body.comment, req.user.email, req.params.commentsId]
+    )
     .then(data => {
       res.locals.updatedComment = data;
       next();

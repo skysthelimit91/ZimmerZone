@@ -30,6 +30,7 @@ albumRouter.post(
   auth.restrict,
 
   (req, res, next) => {
+    console.log('in creat function');
     res.json(res.locals.findByIdData);
   }
 );
@@ -38,9 +39,14 @@ albumRouter.delete('/:commentsId', albumModel.destroy, (req, res, next) => {
   res.json({ id: req.params.commentsId });
 });
 
-albumRouter.put('/:commentsId', albumModel.update, (req, res, next) => {
-  res.json(res.locals.updatedComment);
-});
+albumRouter.put(
+  '/:commentsId',
+  albumModel.update,
+  albumModel.postComments,
+  (req, res, next) => {
+    res.json(res.locals.updatedComment);
+  }
+);
 
 // albumRouter.get(
 //   '/:albumsId/comment-edit',
