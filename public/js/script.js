@@ -6,38 +6,39 @@ $(document).ready(function() {
     $(inputId).removeAttr('disabled');
   });
 
-  // $('#edithere').submit(function(e) {
-  //   // preventing form from submitting
-  //   e.preventDefault();
+  $('#edithere').submit(function(e) {
+    // preventing form from submitting
+    e.preventDefault();
 
-  //   // grabbing form data
-  //   const data = $(this).serialize();
-  //   // selecting the comment's id from hidden input
-  //   const commentId = e.target.getAttribute('data-comment-id');
+    // grabbing form data
+    const data = $(this).serialize();
+    // selecting the comment's id from hidden input
+    const commentId = e.target.getAttribute('data-comment-id');
+    const albumId = $('#album_id').val();
 
-  //   // $('.edit').click(function(e) {
-  //   //   console.log('click heard');
+    // $('.edit').click(function(e) {
+    //   console.log('click heard');
 
-  //   //   $('#comment').removeAttr('disabled');
-  //   // });
+    //   $('#comment').removeAttr('disabled');
+    // });
 
-  //   console.log(`Form data: ${data}`);
+    console.log(`Form data: ${data}`);
 
-  //   // PUT request to /albums/:commentId to update an individual comment
-  //   $.ajax({
-  //     url: `/albums/${commentId}`,
-  //     data: data,
-  //     type: 'PUT',
-  //     success: function(data) {
-  //       console.log('response ', data);
-  //       // redirecting to the beer's show page on success
-  //       //window.location.href = `/albums/${data.id}`;
-  //     },
-  //     error: function(xhr, status, error) {
-  //       // add error handler
-  //     },
-  //   });
-  // });
+    // PUT request to /albums/:commentId to update an individual comment
+    $.ajax({
+      url: `/albums/${albumId}`,
+      data: data,
+      type: 'PUT',
+      success: function(data) {
+        console.log('response ', data);
+        // redirecting to the beer's show page on success
+        //window.location.href = `/albums/${data.id}`;
+      },
+      error: function(xhr, status, error) {
+        // add error handler
+      },
+    });
+  });
 
   // selecting edit form
   console.log('connected');
