@@ -1,10 +1,4 @@
-DROP DATABASE IF EXISTS Zimmer;
 
-CREATE DATABASE Zimmer;
-
-
-
-\c Zimmer
 
 DROP TABLE IF EXISTS users;
 
