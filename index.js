@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.listen(PORT, () => {
-  console.log('Server started on ' + port);
+  console.log('Server started on ' + PORT);
 });
 
 app.use(

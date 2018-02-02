@@ -32,16 +32,29 @@
 }
 
 .albums {
-  /*display: flex;*/
-  /*flex-direction: row;*/
+  display: flex;
+  border-style: solid;
+  border-color: black;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
 }
 
 #index {
-  background-color: #034f84;
+  background-color: #92a8d1;
   display: flex;
+  align-content: center;
+  flex-direction: column;
+  font-size: 14pt;
 }
 
 .albumpic {
   width: 200px;
   height: 200px;
+}
+.users {
+  background-color: #92a8d1;
+}
+#welcome {
+  font-size: 16pt;
 }

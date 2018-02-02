@@ -3,19 +3,25 @@ const albumModel = require('../models/albums');
 const auth = require('../services/auth');
 var moment = require('moment');
 
-albumRouter.get('/home', albumModel.allAlbums, (req, res, next) => {
-  console.log('In your allAlbums function');
-  res.render('index', {
-    allAlbumsInfo: res.locals.allAlbumsData,
+albumRouter.get(
+  '/home',
+  albumModel.allAlbums,
+  auth.restrict,
+  (req, res, next) => {
+    console.log('In your allAlbums function');
+    res.render('index', {
+      allAlbumsInfo: res.locals.allAlbumsData,
 
-    //artName: res.locals.allAlbumsData[0].artistName,
-  });
-});
+      //artName: res.locals.allAlbumsData[0].artistName,
+    });
+  }
+);
 
 albumRouter.get(
   '/:albumsId',
   albumModel.findById,
   albumModel.postComments,
+  auth.restrict,
   (req, res, next) => {
     console.log('in findById function');
     var currentTime = moment().format('LLL');
@@ -39,14 +45,20 @@ albumRouter.post(
   }
 );
 
-albumRouter.delete('/:commentsId', albumModel.destroy, (req, res, next) => {
-  res.json({ id: req.params.commentsId });
-});
+albumRouter.delete(
+  '/:commentsId',
+  albumModel.destroy,
+  auth.restrict,
+  (req, res, next) => {
+    res.json({ id: req.params.commentsId });
+  }
+);
 
 albumRouter.put(
   '/:commentsId',
   albumModel.update,
   albumModel.postComments,
+  auth.restrict,
   (req, res, next) => {
     res.json(res.locals.updatedComment);
   }

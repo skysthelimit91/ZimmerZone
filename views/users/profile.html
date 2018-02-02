@@ -4,15 +4,17 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
     <title>User Profile</title>
     <link rel="stylesheet" href="">
     <script src="/js/jquery.js"></script>
     <script src="/js/script.js"></script>
 </head>
 
-<body>
+<body class="users">
     <main>
-        <section>
+        <section id="welcome">
             Welcome to your profile, {{user.email}}
             <div>
                 <a href="/users/logout">Logout</a>
