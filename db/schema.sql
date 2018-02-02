@@ -34,7 +34,7 @@ DROP TABLE IF EXISTS comments;
 CREATE TABLE comments(
   id BIGSERIAL PRIMARY KEY,
   album_id INTEGER REFERENCES albums(id),
-  comment VARCHAR(255) NOT NULL,
+  comment VARCHAR(255),
   user_id VARCHAR REFERENCES users(email)
 
 );

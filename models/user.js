@@ -57,11 +57,11 @@ userModelObject.incrementUserCounter = function incrementUserCounter(
     // get the user counter number
     db
         .one(
-            'UPDATE users SET comments = comments + 1 WHERE email = $1 RETURNING comments',
+            'UPDATE users SET likes = likes + 1 WHERE email = $1 RETURNING likes',
             [req.user.email]
         )
         .then(counterData => {
-            res.locals.commentData = commentData;
+            res.locals.counterData = counterData;
             next();
         })
         .catch(err => console.log('ERROR:', err));

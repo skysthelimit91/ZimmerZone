@@ -80,4 +80,14 @@ userRouter.get(
   }
 );
 
+userRouter.post(
+  '/counter',
+  auth.restrict,
+  User.incrementUserCounter,
+  (req, res) => {
+    console.log('in post at /counter, req.user: ', req.user);
+    res.json(res.locals.counterData);
+  }
+);
+
 module.exports = userRouter;

@@ -1,4 +1,18 @@
 $(document).ready(function() {
+  // ADAPTED FROM CLASS EXAMPLE
+  const $userDataCounterButton = $('#user-data-counter-button');
+  $userDataCounterButton.click(e => {
+    e.preventDefault();
+    $.ajax({
+      url: '/users/counter',
+      type: 'POST',
+    }).done(function(data) {
+      console.log('done with ajax, data: ', data);
+      const $userDataCounter = $('#user-data-counter');
+      $userDataCounter.text(data.counter);
+    });
+  });
+
   $('.edit').click(function(e) {
     console.log('click heard');
 

@@ -15,7 +15,7 @@
     <ul>
       
       <div class="albumshow">
-        <li>{{albuminfo.artistname}}</li>
+        {{albuminfo.artistname}}
         -{{albuminfo.collectionname}}
         <br>
         <img class="albumpic" src="{{albuminfo.artworkurl100}}">
@@ -45,9 +45,11 @@
         <!--  {{#commentinfo}}<input id="comment_id" type="hidden" value="{{id}}" name="comment_id">{{/commentinfo}} -->
         <input id="album_id" type="hidden" value="{{albuminfo.id}}" name="album_id">
         <input id="postb" type="submit" value="Post" class="post pure-button">Post Comment
+
+            
         <!-- <input id="delete" type="button" class="delete pure-button" value="delete">Delete Comment -->
         
       </form>
-      
+          <button id="user-data-counter-button">Click to like this album</button>        
     </body>
   </html>
