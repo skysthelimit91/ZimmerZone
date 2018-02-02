@@ -8,6 +8,6 @@ const cn = {
   user: 'skylerdavis',
 };
 
-const db = pgp(cn);
+const db = pgp(process.env.DATABASE_URL || cn);
 
 module.exports = db;

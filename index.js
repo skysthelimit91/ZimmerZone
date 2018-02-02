@@ -7,7 +7,7 @@ const mustacheExpress = require('mustache-express');
 const ajax = require('ajax');
 const app = express();
 
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 // registers the template engine for use in res.render
 app.engine('html', mustacheExpress());
