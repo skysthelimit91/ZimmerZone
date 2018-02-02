@@ -1,6 +1,7 @@
 const albumRouter = require('express').Router();
 const albumModel = require('../models/albums');
 const auth = require('../services/auth');
+var moment = require('moment');
 
 albumRouter.get('/home', albumModel.allAlbums, (req, res, next) => {
   console.log('In your allAlbums function');
@@ -17,9 +18,12 @@ albumRouter.get(
   albumModel.postComments,
   (req, res, next) => {
     console.log('in findById function');
+    var currentTime = moment().format('LLL');
+
     res.render('show', {
       albuminfo: res.locals.findByIdData,
       commentinfo: res.locals.allComments,
+      time: currentTime,
     });
   }
 );
