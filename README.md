@@ -2,7 +2,7 @@
 
 ##Technologies used:
 
-node.js to run js server side, javascript for programming, postgresql for data management, npm for installing useful libraries
+node.js to run js server side, javascript for programming, postgresql for data management, npm for installing useful libraries, axios for accessing api, ajax for refreshing page
 
 ##Wireframes:
 
